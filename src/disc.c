@@ -247,6 +247,12 @@ char* discid_get_track_isrc(DiscId *d, int i) {
   return disc->isrc[i];
 }
 
+void discid_get_features(char *features[8]) {
+	memset(features, 0, 8);
+	mb_disc_get_features_unportable(features);
+	return;
+}
+
 
 
 /****************************************************************************
