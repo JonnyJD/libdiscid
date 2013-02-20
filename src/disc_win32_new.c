@@ -28,6 +28,7 @@
 #ifdef _MSC_VER
 #define snprintf _snprintf
 #endif
+#include "discid/discid.h"
 #include "discid/discid_private.h"
 
 #define CD_FRAMES     75
@@ -148,6 +149,14 @@ static void read_disc_isrc(HANDLE hDevice, mb_disc_private *disc, int track)
 		strncpy(disc->isrc[track], data.TrackIsrc.TrackIsrc, ISRC_STR_LENGTH);
 	}
 }
+
+void mb_disc_get_features_unportable(char *features[8]) {
+	features[0] = DISCID_FEATURE_READ;
+	features[1] = DISCID_FEATURE_MCN;
+	features[2] = DISCID_FEATURE_ISRC;
+	return;
+}
+
 
 int mb_disc_read_unportable_nt(mb_disc_private *disc, const char *device)
 {
