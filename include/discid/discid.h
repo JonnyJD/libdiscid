@@ -297,6 +297,21 @@ LIBDISCID_API char* discid_get_mcn(DiscId *d);
  */
 LIBDISCID_API char* discid_get_track_isrc(DiscId *d, int track_num);
 
+#define DISCID_FEATURE_READ	"read"
+#define DISCID_FEATURE_MCN	"MCN"
+#define DISCID_FEATURE_ISRC	"ISRC"
+/**
+ * Return a list of features supported by the current platform
+ *
+ * The platform dependent features are currently:
+ *   - "read"	read TOC from disc
+ *   - "MCN"	read MCN from disc
+ *   - "ISRC"	read ISRC from disc
+ *
+ * @return an array of supported features (as strings)
+ */
+LIBDISCID_API void discid_get_features(char *features[8]);
+
 
 #ifdef __cplusplus
   }
