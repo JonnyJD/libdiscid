@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libdiscid
-   &#160;<span id="projectnumber">0.4.0</span>
+   &#160;<span id="projectnumber">0.4.1</span>
    </div>
   </td>
  </tr>
@@ -379,6 +379,7 @@ Functions</h2></td></tr>
 
 <p>Return a list of features supported by the current platform. </p>
 <p>The array of length DISCID_FEATURES_LENGTH should be allocated by the user. After the call each element of the array is either NULL or a pointer to a static string.</p>
+<dl class="section since"><dt>Since</dt><dd>libdiscid 0.4.0</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>an array of supported features (as strings) </dd></dl>
 
 </div>
@@ -500,6 +501,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the Media Catalogue Number for the disc. </p>
+<dl class="section since"><dt>Since</dt><dd>libdiscid 0.3.0</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>a DiscId object created by <a class="el" href="discid_8h.html#a0c9c6dcb8d0386d566c0b46f99028ec8" title="Return a handle for a new DiscId object.">discid_new()</a> </td></tr>
@@ -588,6 +590,7 @@ Functions</h2></td></tr>
 
 <p>Return the ISRC for a track. </p>
 <p>Only track numbers between (and including) <a class="el" href="discid_8h.html#af80bacb0d854dc6df421db4ca45c053a" title="Return the number of the first track on this disc.">discid_get_first_track_num()</a> and <a class="el" href="discid_8h.html#a15d0e197cdbb062240f82c69a944a46d" title="Return the number of the last track on this disc.">discid_get_last_track_num()</a> may be used.</p>
+<dl class="section since"><dt>Since</dt><dd>libdiscid 0.3.0</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>a DiscId object created by <a class="el" href="discid_8h.html#a0c9c6dcb8d0386d566c0b46f99028ec8" title="Return a handle for a new DiscId object.">discid_new()</a> </td></tr>
@@ -689,6 +692,7 @@ Functions</h2></td></tr>
 
 <p>Return the full version string of this library, including the name. </p>
 <p>This can be used for debug output. Don't use this to test for features, see <a class="el" href="discid_8h.html#a77c8b8c05b74ed05f06cb561d6fb98c6" title="Check if a certain feature is implemented on the current platform.">discid_has_feature()</a>.</p>
+<dl class="section since"><dt>Since</dt><dd>libdiscid 0.4.0</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>a string containing the version of libdiscid. </dd></dl>
 
 </div>
@@ -735,6 +739,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Check if a certain feature is implemented on the current platform. </p>
+<dl class="section since"><dt>Since</dt><dd>libdiscid 0.4.0</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the feature is implemented and 0 if not. </dd></dl>
 
 </div>
@@ -853,7 +858,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2013 21:26:25 for libdiscid by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 9 2013 18:20:45 for libdiscid by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
