@@ -380,7 +380,12 @@ Functions</h2></td></tr>
 <p>Return a list of features supported by the current platform. </p>
 <p>The array of length DISCID_FEATURES_LENGTH should be allocated by the user. After the call each element of the array is either NULL or a pointer to a static string.</p>
 <dl class="section since"><dt>Since</dt><dd>libdiscid 0.4.0</dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>an array of supported features (as strings) </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">features</td><td>a static string array of length DISCID_FEATURES_LENGTH </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -740,6 +745,12 @@ Functions</h2></td></tr>
 
 <p>Check if a certain feature is implemented on the current platform. </p>
 <dl class="section since"><dt>Since</dt><dd>libdiscid 0.4.0</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">feature</td><td>as enum <a class="el" href="discid_8h.html#a3846137f36bef0a30da8952236636840" title="PLATFORM-DEPENDENT FEATURES.">discid_feature</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the feature is implemented and 0 if not. </dd></dl>
 
 </div>
@@ -858,7 +869,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 9 2013 18:20:45 for libdiscid by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2013 14:44:28 for libdiscid by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
