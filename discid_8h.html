@@ -144,10 +144,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:afbdb37168dd4510f71638bbcbdbbdc0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release the memory allocated for the DiscId object.  <a href="#afbdb37168dd4510f71638bbcbdbbdc0b">More...</a><br/></td></tr>
 <tr class="separator:afbdb37168dd4510f71638bbcbdbbdc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedaa7960dce61e94d9826a41764d9493"><td class="memItemLeft" align="right" valign="top"><a class="el" href="discid_8h.html#a3febad6285be3ab22c9f65e6d68236ae">LIBDISCID_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493">discid_read</a> (<a class="el" href="discid_8h.html#a18a0b8162c3f4f84e6d3bfd56dbd03cd">DiscId</a> *d, const char *device)</td></tr>
-<tr class="memdesc:aedaa7960dce61e94d9826a41764d9493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the disc in the given CD-ROM/DVD-ROM drive.  <a href="#aedaa7960dce61e94d9826a41764d9493">More...</a><br/></td></tr>
+<tr class="memdesc:aedaa7960dce61e94d9826a41764d9493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all supported features of the disc in the given CD-ROM/DVD-ROM drive.  <a href="#aedaa7960dce61e94d9826a41764d9493">More...</a><br/></td></tr>
 <tr class="separator:aedaa7960dce61e94d9826a41764d9493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad814d490d9037d2a967b835b58649d0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="discid_8h.html#a3febad6285be3ab22c9f65e6d68236ae">LIBDISCID_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="discid_8h.html#ad814d490d9037d2a967b835b58649d0c">discid_read_sparse</a> (<a class="el" href="discid_8h.html#a18a0b8162c3f4f84e6d3bfd56dbd03cd">DiscId</a> *d, const char *device, unsigned int features)</td></tr>
-<tr class="memdesc:ad814d490d9037d2a967b835b58649d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the disc in the given CD-ROM/DVD-ROM drive using only the specified features.  <a href="#ad814d490d9037d2a967b835b58649d0c">More...</a><br/></td></tr>
+<tr class="memdesc:ad814d490d9037d2a967b835b58649d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the disc in the given CD-ROM/DVD-ROM drive extracting only the TOC and additionally specified features.  <a href="#ad814d490d9037d2a967b835b58649d0c">More...</a><br/></td></tr>
 <tr class="separator:ad814d490d9037d2a967b835b58649d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b89ad6e229d38255eb8b5c6503e0fee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="discid_8h.html#a3febad6285be3ab22c9f65e6d68236ae">LIBDISCID_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="discid_8h.html#a1b89ad6e229d38255eb8b5c6503e0fee">discid_put</a> (<a class="el" href="discid_8h.html#a18a0b8162c3f4f84e6d3bfd56dbd03cd">DiscId</a> *d, int first, int last, int *offsets)</td></tr>
 <tr class="memdesc:a1b89ad6e229d38255eb8b5c6503e0fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the TOC of a known CD.  <a href="#a1b89ad6e229d38255eb8b5c6503e0fee">More...</a><br/></td></tr>
@@ -368,7 +368,8 @@ Functions</h2></td></tr>
 <li>"mcn" read MCN from disc</li>
 <li>"isrc" read ISRC from disc</li>
 </ul>
-<p>You can use get_feature_list() or has_feature() below. </p>
+<p>A table in the <a href="http://musicbrainz.org/doc/libdiscid">MusicBrainz Documentation</a> specifies which features are available on which platform in what version.</p>
+<p>In the code you can use <a class="el" href="discid_8h.html#aedc388417c5c02c8a0767e3272f3eaa0" title="Return a list of features supported by the current platform.">discid_get_feature_list()</a> or <a class="el" href="discid_8h.html#a77c8b8c05b74ed05f06cb561d6fb98c6" title="Check if a certain feature is implemented on the current platform.">discid_has_feature()</a> below to get the features for your platform in this version. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a3846137f36bef0a30da8952236636840a9398149eb6eb324a84894f0862e495c4"></a>DISCID_FEATURE_READ</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
@@ -439,7 +440,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return a human-readable error message. </p>
-<p>This function may only be used if <a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493" title="Read the disc in the given CD-ROM/DVD-ROM drive.">discid_read()</a> failed. The returned error message is only valid as long as the DiscId object exists.</p>
+<p>This function may only be used if <a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493" title="Read all supported features of the disc in the given CD-ROM/DVD-ROM drive.">discid_read()</a> failed. The returned error message is only valid as long as the DiscId object exists.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>a DiscId object created by <a class="el" href="discid_8h.html#a0c9c6dcb8d0386d566c0b46f99028ec8" title="Return a handle for a new DiscId object.">discid_new()</a> </td></tr>
@@ -831,6 +832,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Check if a certain feature is implemented on the current platform. </p>
+<p>This only works for single features, not bit masks with multiple features.</p>
 <dl class="section since"><dt>Since</dt><dd>libdiscid 0.4.0</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -856,7 +858,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return a handle for a new DiscId object. </p>
-<p>If no memory could be allocated, NULL is returned. Don't use the created DiscId object before calling <a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493" title="Read the disc in the given CD-ROM/DVD-ROM drive.">discid_read()</a> or <a class="el" href="discid_8h.html#a1b89ad6e229d38255eb8b5c6503e0fee" title="Provides the TOC of a known CD.">discid_put()</a>.</p>
+<p>If no memory could be allocated, NULL is returned. Don't use the created DiscId object before calling <a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493" title="Read all supported features of the disc in the given CD-ROM/DVD-ROM drive.">discid_read()</a> or <a class="el" href="discid_8h.html#a1b89ad6e229d38255eb8b5c6503e0fee" title="Provides the TOC of a known CD.">discid_put()</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>a DiscId object, or NULL. </dd></dl>
 
 </div>
@@ -938,9 +940,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Read the disc in the given CD-ROM/DVD-ROM drive. </p>
+<p>Read all supported features of the disc in the given CD-ROM/DVD-ROM drive. </p>
 <p>This function reads the disc in the drive specified by the given device identifier. If the device is NULL, the default drive, as returned by <a class="el" href="discid_8h.html#adde2360798912c071e0ec34c865b3a1b" title="Return the name of the default disc drive for this operating system.">discid_get_default_device()</a> is used.</p>
-<p>If you do not require all features provided by libdiscid, such as MCN or ISRC reading, you should consider using <a class="el" href="discid_8h.html#ad814d490d9037d2a967b835b58649d0c" title="Read the disc in the given CD-ROM/DVD-ROM drive using only the specified features.">discid_read_sparse()</a> instead of <a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493" title="Read the disc in the given CD-ROM/DVD-ROM drive.">discid_read()</a> for performance reasons.</p>
+<p>If you do not require all features provided by libdiscid, such as MCN or ISRC reading, you should consider using <a class="el" href="discid_8h.html#ad814d490d9037d2a967b835b58649d0c" title="Read the disc in the given CD-ROM/DVD-ROM drive extracting only the TOC and additionally specified fe...">discid_read_sparse()</a> instead of <a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493" title="Read all supported features of the disc in the given CD-ROM/DVD-ROM drive.">discid_read()</a> for performance reasons.</p>
 <p>On error, this function returns false and sets the error message which you can access using <a class="el" href="discid_8h.html#aca8ee2dad6d8a546f93c45bee9b6e696" title="Return a human-readable error message.">discid_get_error_msg()</a>. In this case, the other functions won't return meaningful values and should not be used.</p>
 <p>This function may be used multiple times with the same DiscId object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -984,8 +986,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Read the disc in the given CD-ROM/DVD-ROM drive using only the specified features. </p>
-<p>This function is similar to <a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493" title="Read the disc in the given CD-ROM/DVD-ROM drive.">discid_read()</a> but it allows to use only the features explicitely specified. By default this function will read only the TOC, but additional features like <a class="el" href="discid_8h.html#a3846137f36bef0a30da8952236636840aa014cbc99d2eef0b6a918cd4403c0298">DISCID_FEATURE_MCN</a> and <a class="el" href="discid_8h.html#a3846137f36bef0a30da8952236636840a30997ee786cd25cbe1a02f89bc2627fc">DISCID_FEATURE_ISRC</a> can be set using the features parameter. Multiple features can be set using bitwise OR.</p>
+<p>Read the disc in the given CD-ROM/DVD-ROM drive extracting only the TOC and additionally specified features. </p>
+<p>This function will always read the TOC, but additional features like <a class="el" href="discid_8h.html#a3846137f36bef0a30da8952236636840aa014cbc99d2eef0b6a918cd4403c0298">DISCID_FEATURE_MCN</a> and <a class="el" href="discid_8h.html#a3846137f36bef0a30da8952236636840a30997ee786cd25cbe1a02f89bc2627fc">DISCID_FEATURE_ISRC</a> can be set using the features parameter. Multiple features can be set using bitwise OR.</p>
+<p>If you only want to generate a disc ID, you only need the TOC, so set features to 0: </p>
+<div class="fragment"><div class="line"><a class="code" href="discid_8h.html#ad814d490d9037d2a967b835b58649d0c" title="Read the disc in the given CD-ROM/DVD-ROM drive extracting only the TOC and additionally specified fe...">discid_read_sparse</a>(disc, device, 0)</div>
+</div><!-- fragment --><p> This is a bit more verbose, but equivalent since <a class="el" href="discid_8h.html#a3846137f36bef0a30da8952236636840a9398149eb6eb324a84894f0862e495c4">DISCID_FEATURE_READ</a> == 0: </p>
+<div class="fragment"><div class="line"><a class="code" href="discid_8h.html#ad814d490d9037d2a967b835b58649d0c" title="Read the disc in the given CD-ROM/DVD-ROM drive extracting only the TOC and additionally specified fe...">discid_read_sparse</a>(disc, device, <a class="code" href="discid_8h.html#a3846137f36bef0a30da8952236636840a9398149eb6eb324a84894f0862e495c4">DISCID_FEATURE_READ</a>)</div>
+</div><!-- fragment --><p>If you want to read all features available, you can use <a class="el" href="discid_8h.html#aedaa7960dce61e94d9826a41764d9493" title="Read all supported features of the disc in the given CD-ROM/DVD-ROM drive.">discid_read()</a>.</p>
 <p>On error, this function returns false and sets the error message which you can access using <a class="el" href="discid_8h.html#aca8ee2dad6d8a546f93c45bee9b6e696" title="Return a human-readable error message.">discid_get_error_msg()</a>. In this case, the other functions won't return meaningful values and should not be used.</p>
 <p>This function may be used multiple times with the same DiscId object.</p>
 <dl class="section since"><dt>Since</dt><dd>libdiscid 0.5.0</dd></dl>
@@ -1004,7 +1011,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 12 2013 16:28:37 for libdiscid by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 18 2013 11:35:35 for libdiscid by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
