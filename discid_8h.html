@@ -190,7 +190,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:abd1c425e8090dae562b04da4bdb312d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the length of a track in sectors.  <a href="#abd1c425e8090dae562b04da4bdb312d1">More...</a><br/></td></tr>
 <tr class="separator:abd1c425e8090dae562b04da4bdb312d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd26cb0d09d58972ae8fb9ce1c3031de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="discid_8h.html#a3febad6285be3ab22c9f65e6d68236ae">LIBDISCID_API</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="discid_8h.html#afd26cb0d09d58972ae8fb9ce1c3031de">discid_get_mcn</a> (<a class="el" href="discid_8h.html#a18a0b8162c3f4f84e6d3bfd56dbd03cd">DiscId</a> *d)</td></tr>
-<tr class="memdesc:afd26cb0d09d58972ae8fb9ce1c3031de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Media Catalogue Number for the disc.  <a href="#afd26cb0d09d58972ae8fb9ce1c3031de">More...</a><br/></td></tr>
+<tr class="memdesc:afd26cb0d09d58972ae8fb9ce1c3031de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Media Catalogue Number (MCN) for the disc.  <a href="#afd26cb0d09d58972ae8fb9ce1c3031de">More...</a><br/></td></tr>
 <tr class="separator:afd26cb0d09d58972ae8fb9ce1c3031de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a068b1d7705bff6d12ae8ae0f0ff862b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="discid_8h.html#a3febad6285be3ab22c9f65e6d68236ae">LIBDISCID_API</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="discid_8h.html#a068b1d7705bff6d12ae8ae0f0ff862b2">discid_get_track_isrc</a> (<a class="el" href="discid_8h.html#a18a0b8162c3f4f84e6d3bfd56dbd03cd">DiscId</a> *d, int track_num)</td></tr>
 <tr class="memdesc:a068b1d7705bff6d12ae8ae0f0ff862b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the ISRC for a track.  <a href="#a068b1d7705bff6d12ae8ae0f0ff862b2">More...</a><br/></td></tr>
@@ -609,7 +609,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the Media Catalogue Number for the disc. </p>
+<p>Return the Media Catalogue Number (MCN) for the disc. </p>
+<p>This is essentially an EAN (= UPC with 0 prefix).</p>
 <dl class="section since"><dt>Since</dt><dd>libdiscid 0.3.0</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -920,6 +921,7 @@ Functions</h2></td></tr>
 <p>This function may be used if the TOC has been read earlier and you want to calculate the disc ID afterwards, without accessing the disc drive. It replaces the discid_read function in this case.</p>
 <p>On error, this function returns false and sets the error message which you can access using <a class="el" href="discid_8h.html#aca8ee2dad6d8a546f93c45bee9b6e696" title="Return a human-readable error message.">discid_get_error_msg()</a>. In this case, the other functions won't return meaningful values and should not be used.</p>
 <p>The offsets parameter points to an array which contains the track offsets for each track. The first element, offsets[0], is the leadout track. It must contain the total number of sectors on the disc.</p>
+<p>For discs with additional data tracks, the trailing data tracks should be ignored. offset[0] should then be the last sector of the last audio track. Make sure the length of the last audio track as returned by libdiscid after a put is the same as the length of your last audio track. Depending on your tools you might need to substract 11400 (2:32 min.). See also: <a href="http://musicbrainz.org/doc/Disc_ID_Calculation">Disc ID Calculation</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>a DiscID object created by <a class="el" href="discid_8h.html#a0c9c6dcb8d0386d566c0b46f99028ec8" title="Return a handle for a new DiscId object.">discid_new()</a> </td></tr>
@@ -1028,7 +1030,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 24 2013 14:04:50 for libdiscid by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 26 2013 16:47:48 for libdiscid by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
