@@ -51,7 +51,13 @@
 #define MB_DEFAULT_DEVICE "/dev/cdrom"
 #define MAX_DEV_LEN 50
 
-static char default_device[MAX_DEV_LEN] = "\0";
+#if (defined(__GNUC__) && (__GNUC__ >= 4)) || defined(__clang__)
+#	define THREAD_LOCAL __thread
+#else
+#	define THREAD_LOCAL
+#endif
+
+static THREAD_LOCAL char default_device[MAX_DEV_LEN] = "\0";
 
 
 int mb_disc_unix_read_toc_header(int fd, mb_disc_toc *toc) {
@@ -92,6 +98,7 @@ char *mb_disc_get_default_device_unportable(void) {
 	FILE *proc_file;
 	char *current_device;
 	char *lineptr = NULL;
+	char *saveptr = NULL;
 	size_t bufflen;
 
 	/* prefer the default device symlink to the internal names */
@@ -109,9 +116,9 @@ char *mb_disc_get_default_device_unportable(void) {
 				return MB_DEFAULT_DEVICE;
 			}
 		} while (strstr(lineptr, "drive name:") == NULL);
-		current_device = strtok(lineptr, "\t");
+		current_device = strtok_r(lineptr, "\t", &saveptr);
 		while (current_device != NULL) {
-			current_device = strtok(NULL, "\t");
+			current_device = strtok_r(NULL, "\t", &saveptr);
 			if (current_device != NULL) {
 				snprintf(default_device, MAX_DEV_LEN,
 					 "/dev/%s", current_device);
